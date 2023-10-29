@@ -89,16 +89,16 @@ public class Zoo {
     }
 
     //Instruction10.....................................
-    public boolean addAnimal(Animal animal) {
-        if (searchAnimal(animal) != -1)
-            return false;
-        if (isZooFull())
-            return false;
-        //if (nbrAnimals == nbrCages)
-            //return false;
+    public void addAnimal(Animal animal) throws ZooFullException, InvalidAgeException {
+        if (nbrAnimals >= nbrCages) {
+            throw new ZooFullException("Zoo is full");
+        }
+
+        if (animal.getAge() < 0) {
+            throw new InvalidAgeException("Invalid age " + animal.getAge());
+        }
         animals[nbrAnimals] = animal;
         nbrAnimals++;
-        return true;
     }
     //Instruction13....................................
     public boolean removeAnimal(Animal animal) {

@@ -27,8 +27,8 @@ public class ZooManagement {
         System.out.println(myZoo);
         System.out.println(myZoo.toString());
         //Instruction9............................................................
-        System.out.println(myZoo.addAnimal(lion));
-        System.out.println(myZoo.addAnimal(dog));
+        //System.out.println(myZoo.addAnimal(lion));
+        //System.out.println(myZoo.addAnimal(dog));
 
         myZoo.displayAnimals();
         //Instruction11.......................................
@@ -53,8 +53,8 @@ public class ZooManagement {
         Zoo Zoo2 = new Zoo("tn.esprit.gestionzoo.entities.Zoo 2", "ariana");
 
         // Ajout d'animaux
-        myZoo.addAnimal(lion);
-        Zoo2.addAnimal(dog);
+        //myZoo.addAnimal(lion);
+        //Zoo2.addAnimal(dog);
 
         Zoo zooAvecPlusAnimaux = Zoo.comparerZoo(myZoo, Zoo2);
         if (zooAvecPlusAnimaux != null) {
@@ -65,7 +65,7 @@ public class ZooManagement {
 
 
         //Instruction21.......................................
-        Aquatic aquatic = new Aquatic();
+        //Aquatic aquatic = new Aquatic();
         Terrestrial terrestrial = new Terrestrial();
 
         //Instruction23.......................................
@@ -77,9 +77,9 @@ public class ZooManagement {
         Dolphin dolphin3=new Dolphin("Dophin","nono",2,false,"habitat",20);
 
         Penguin penguin1=new Penguin("Penguin","penpen",3,true,"habitat",30);
-        Aquatic aquatic2=new Aquatic("Family","penpen",4,true,"habitat");
+        //Aquatic aquatic2=new Aquatic("Family","penpen",4,true,"habitat");
 
-        aquatic.swim();
+        //aquatic.swim();
         dolphin.swim();
         penguin.swim();
 
@@ -91,5 +91,29 @@ public class ZooManagement {
         System.out.println("Max Penguin Swimming Depth est: " + myZoo.maxPenguinSwimmingDepth());
         myZoo.displayNumberOfAquaticsByType();
 
+        try {
+            myZoo.addAnimal(dog);
+        } catch (ZooFullException e) {
+            throw new RuntimeException(e);
+        }catch (InvalidAgeException e){
+            System.err.println("Invalid Age Exception: " + e.getMessage());
+        }
+        try {
+            myZoo.addAnimal(lion);
+        } catch (ZooFullException e) {
+            throw new RuntimeException(e);
+        }catch (InvalidAgeException e){
+            System.err.println("Invalid Age Exception: " + e.getMessage());
+        }
+        try {
+            myZoo.addAnimal(dog2);
+        } catch (ZooFullException e) {
+            throw new RuntimeException(e);
+
+        }catch (InvalidAgeException e){
+            System.err.println("Invalid Age Exception: " + e.getMessage());
+        }
+
+        myZoo.displayAnimals();
     }
 }
